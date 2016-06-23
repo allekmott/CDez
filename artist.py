@@ -6,6 +6,6 @@ class Artist:
 		self.id = id
 		self.name = name
 
-	def __init__(self, prop_list):
-		self.id = prop_list[0]
-		self.name = prop_list[1]
+	def __init__(self, db_row):
+		self.id = db_row[0]
+		self.name = db_row[1]

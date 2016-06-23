@@ -9,9 +9,9 @@ class CD:
 		self.box = box
 		self.location = location
 
-	def __init(self, prop_list):
-		self.id = prop_list[0]
-		self.artist = prop_list[1]
-		self.name = prop_list[2]
-		self.box = prop_list[3]
-		self.location = prop_list[4]
+	def __init(self, db_row):
+		self.id = db_row[0]
+		self.artist = db_row[1]
+		self.name = db_row[2]
+		self.box = db_row[3]
+		self.location = db_row[4]
