@@ -162,6 +162,15 @@ class Database:
 		result = self.c.fetchone()
 		return Artist(result)
 
+	def getArtistByName(self, name):
+		"""
+		Fetch Artist from database with matching name
+		"""
+		t = (name,)
+		self.c.execute("SELECT * FROM Artists WHERE Name=?", t)
+		result = self.c.fetchone()
+		return Artist(result)
+
 	def getCDByID(self, id):
 		"""
 		Fetch CD from database with matching id
@@ -171,4 +180,14 @@ class Database:
 		result = self.c.fetchone()
 		return CD(result)
 
+	def getCDsByArtistName(self, artist):
+		"""
+		Fetch CDs from database with matching artist name
+		"""
+		artist_id = self.getArtistByName(artist).id
+		t = (artist_id,)
+		cds = []
+		for row in self.c.execute("SELECT * FROM CDs WHERE Artist=?", t):
+			cds.append(CD(row))
+		return cds
 
